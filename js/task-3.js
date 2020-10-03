@@ -57,7 +57,12 @@ galleryEl.append(liItemEl1, liItemEl2, liItemEl3);
 */
 
 //Вариант 2 (Ручки ооочень устали ;( => делаем динамику)
+const makeGalleryMarkup = images.reduce((acc, {
+    url,
+    alt
+}) => {
+    acc += `<li class='gallery__container'><img class='gallery__img' src="${url}" alt="${alt}"></li>`;
+    return acc;
+}, "");
 
-for (let el of images) {
-    galleryEl.insertAdjacentHTML('beforeEnd', `<li class='gallery__container'><img class='gallery__img' src="${el.url}" alt="${el.alt}"></li>`);
-};
+galleryEl.insertAdjacentHTML('beforeEnd', makeGalleryMarkup);
